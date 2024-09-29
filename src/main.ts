@@ -1,36 +1,32 @@
-function calculate(): void {
-  const nome: string = "Gustavo";
-  const altura: number = 1.80;
-  const peso: number = 84;
+export function calculate(name: string, heigth: number, weight: number): string {
+  try {
+    if (!name || heigth <= 0.40 || weight <= 10) {
+      throw new Error("Nome, Altura ou Peso inválido!");
+    }
 
-  const IMC: number = (peso / (altura * 2));
-
-  display(IMC, nome);
-}
-
-function display(IMC: number, nome: string): void {
-  switch (true) {
-    case IMC < 18.5:
-      console.log(`${nome} você está abaixo do peso`);
-      break;
-    case IMC < 25:
-      console.log(`${nome} você está com peso ideal.`);
-      break;
-    case IMC < 30:
-      console.log(`${nome} você está levemente acima do peso`)
-      break;
-    case IMC < 35:
-      console.log(`${nome} você está com obesidade grau I.`);
-      break;
-    case IMC < 40:
-      console.log(`${nome} você está com obesidade grau II.`);
-      break;
-    case IMC < 50:
-      console.log(`${nome} você está com obesidade grau III.`);
-      break;
-    default:
-      break;
+    const IMC: number = (weight / (heigth * 2));
+  
+    return display(IMC, name);
+  } catch (error) {
+    return `Error: ${error}`;
   }
 }
 
-calculate();
+function display(IMC: number, nome: string): string {
+  switch (true) {
+    case IMC < 18.5:
+      return `${nome} você está abaixo do peso. Seu peso é ${IMC.toFixed()}.`;
+    case IMC < 25:
+      return `${nome} você está com peso ideal. Seu peso é ${IMC.toFixed()}.`;
+    case IMC < 30:
+      return `${nome} você está levemente acima do peso. Seu peso é ${IMC.toFixed()}.`;
+    case IMC < 35:
+      return `${nome} você está com obesidade grau I. Seu peso é ${IMC.toFixed()}.`;
+    case IMC < 40:
+      return `${nome} você está com obesidade grau II. Seu peso é ${IMC.toFixed()}.`;
+    case IMC < 50:
+      return `${nome} você está com obesidade grau III! Seu peso é ${IMC.toFixed()}.`;
+    default:
+      return `Os valores: ${nome} ou ${IMC} não foram definido corretamente!`
+  }
+}
