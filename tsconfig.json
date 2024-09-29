@@ -1,18 +1,20 @@
 {
   "compilerOptions": {
-    "target": "ES2023",
+    "target": "ES6",
     "useDefineForClassFields": true,
     "module": "ESNext",
     "lib": ["ES2023.Array", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
+    "esModuleInterop": true,
+    "removeComments": true,
 
     /* Bundler mode */
     "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
+    "allowImportingTsExtensions": false,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "moduleDetection": "force",
-    "noEmit": true,
+    "noEmit": false,
 
     /* Linting */
     "strict": true,
@@ -23,5 +25,6 @@
     "rootDir": "./src",
     "noEmitOnError": true
   },
-  "include": ["./src/**/*", "./build/main.js"]
+  "include": ["./src/**/*", "./build/*"],
+  "exclude": ["node_modules"]
 }
