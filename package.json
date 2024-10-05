@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "ts-node-dev --ignore-watch node_modules src/main.ts",
+    "dev": "vite",
     "build": "tsc && vite build",
     "start": "node ./build/main.js",
     "preview": "vite preview"
