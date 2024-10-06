@@ -6,6 +6,7 @@ function calculate(): void {
     const nameElement: HTMLInputElement = document.getElementById("name") as HTMLInputElement;
     const heightElement: HTMLInputElement = document.getElementById("heigth") as HTMLInputElement;
     const weightElement: HTMLInputElement = document.getElementById("weight") as HTMLInputElement;
+    const date: Date = new Date();
 
     if (!nameElement || !heightElement || !weightElement) {
       throw new Error("Erro: Não foi possível encontrar os elementos de entrada.");
@@ -22,29 +23,29 @@ function calculate(): void {
 
     const IMC: number = (weight / (height * height));
   
-    const message = display(IMC, name);
+    const message = display(IMC, name, date);
     displayMessage(message);
   } catch (error) {
     displayMessage(`Error: ${error}`);
   }
 }
 
-function display(IMC: number, nome: string): string {
+function display(IMC: number, name: string, date: Date): string {
   switch (true) {
     case IMC < 18.5:
-      return `${nome} você está abaixo do peso. Seu peso é ${IMC.toFixed()}.`;
+      return `${name} você está abaixo do peso. Seu peso é ${IMC.toFixed()}. ${date}.`;
     case IMC < 25:
-      return `${nome} você está com peso ideal. Seu peso é ${IMC.toFixed()}.`;
+      return `${name} você está com peso ideal. Seu peso é ${IMC.toFixed()}. ${date}.`;
     case IMC < 30:
-      return `${nome} você está levemente acima do peso. Seu peso é ${IMC.toFixed()}.`;
+      return `${name} você está levemente acima do peso. Seu peso é ${IMC.toFixed()}. ${date}.`;
     case IMC < 35:
-      return `${nome} você está com obesidade grau I. Seu peso é ${IMC.toFixed()}.`;
+      return `${name} você está com obesidade grau I. Seu peso é ${IMC.toFixed()}. ${date}.`;
     case IMC < 40:
-      return `${nome} você está com obesidade grau II. Seu peso é ${IMC.toFixed()}.`;
+      return `${name} você está com obesidade grau II. Seu peso é ${IMC.toFixed()}. ${date}.`;
     case IMC < 50:
-      return `${nome} você está com obesidade grau III! Seu peso é ${IMC.toFixed()}.`;
+      return `${name} você está com obesidade grau III! Seu peso é ${IMC.toFixed()}. ${date}.`;
     default:
-      return `Os valores: ${nome} ou ${IMC} não foram definido corretamente!`
+      return `Os valores: ${name} ou ${IMC} não foram definido corretamente!`
   }
 }
 
